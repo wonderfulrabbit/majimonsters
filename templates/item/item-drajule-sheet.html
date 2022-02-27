@@ -1,0 +1,22 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+  <div class="flex-spread">
+    <img class="circle-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+  </div>
+
+  <header class="sheet-header">
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  <section class="item-body">
+
+    <div class="resource">
+      <label class="resource-label">Activated:</label>
+      <input name="data.activated" type="checkbox" {{checked data.activated}}>
+    </div>
+  
+  </section>
+
+</form>

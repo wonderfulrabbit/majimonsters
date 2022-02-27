@@ -1,0 +1,273 @@
+{
+   "Actor":{
+      "types":[
+         "character",
+         "monster",
+         "techniquelist"
+      ],
+      "templates":{
+         "base":{
+            "hp":{
+               "value":20,
+               "max":20
+            },
+            "biography":""
+         }
+      },
+      "character":{
+         "templates":[
+            "base"
+         ],
+         "attributes":{
+            "authority":1,
+            "class":"",
+            "archetype":"",
+            "background":"",
+            "level":{
+               "value":1
+            },
+            "interaction":0,
+            "knowledge":0,
+            "vigor":0
+         },
+         "currency":{
+            "imperials": 0,
+            "suls": 0,
+            "eyes": 0
+         },
+         "skills":{
+            "guile":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "perception":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "persuasion":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "wits":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            }
+         },
+         "skills2":{
+            "education":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "intuition":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "proficiency":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "survival":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            }
+         },
+         "skills3":{
+            "athletics":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "fortitude":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "strength":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            },
+            "willpower":{
+               "g1":true,
+               "g2":false,
+               "g3":false,
+               "g4":false,
+               "g5":false,
+               "g6":false,
+               "g7":false,
+               "g8":false
+            }
+         }
+      },
+      "monster":{
+        "hp": {
+          "value": 0,
+          "max": 0
+        },
+        "specie": "",
+        "size": 2,
+        "sex": 0,
+        "description":"",
+        "stats": {
+          "health": 0,
+          "strike": 0,
+          "protection": 0,
+          "magic": 0,
+          "discipline": 0,
+          "speed": 0,
+          "brawn": 0,
+          "talent": 0
+        },
+        "upgrade":{
+          "health": {
+            "first": false,
+            "second": false
+          },
+          "strike": {
+            "first": false,
+            "second": false
+          },
+          "protection": {
+            "first": false,
+            "second": false
+          },
+          "magic": {
+            "first": false,
+            "second": false
+          },
+          "discipline": {
+            "first": false,
+            "second": false
+          },
+          "speed": {
+            "first": false,
+            "second": false
+          }
+        },
+        "elements":{
+          "affinities":{
+            "n1": 1,
+            "n2": 0,
+            "n3": 0,
+            "n4": 0
+          },
+          "resistances": "",
+          "vulnerabilities": ""
+        },
+        "states": {
+          "xp": {
+            "value": 0,
+            "max": 3
+          },
+          "level": 1,
+          "grade": 1,
+          "grit": {
+            "value": 1,
+            "max": 1
+          }
+        },
+        "characteristics": "",
+        "behavior": "",
+        "class": ""
+      },
+      "techniquelist":{
+
+      }
+   },
+   "Item":{
+      "types":[
+         "item",
+         "feature",
+         "drajule",
+         "technique"
+      ],
+      "item":{
+         "description":"",
+         "quantity": 1,
+         "cost": 0,
+         "consumable": false,
+         "max": 0
+      },
+      "feature":{
+        "description":""
+      },
+      "drajule":{
+        "activated": false
+      },
+      "technique":{
+        "type": 0,
+        "element": 0,
+        "attack":{
+          "stat1":0,
+          "stat2":0,
+          "stat2_alt":0
+        },
+        "description": "",
+        "damageroll": "",
+        "tags": ""
+      }
+   }
+}

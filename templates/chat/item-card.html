@@ -1,0 +1,24 @@
+<section class="item feat" data-item-id="{{_id}}">
+  <div class="item-name" style="padding:10px">
+    <div class="item-title">
+      <h4>
+        {{name}} {{printQuantity data.consumable data.quantity data.max}}
+      </h4>
+    </div>
+  </div>
+
+  <div class="item-description">
+    {{{data.description}}}
+
+    {{#if data.consumable}}
+    <button class="rollable useitem" 
+      style="margin: 0px; width: inner;" 
+      data-actor="{{actor_id}}" data-item="{{_id}}"
+    >
+      Use
+    </button>
+    {{/if}}
+
+  </div>
+    
+</section>

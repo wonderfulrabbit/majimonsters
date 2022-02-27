@@ -1,0 +1,53 @@
+<section>
+  <h2 style="text-align: center; font-size: 15px;">
+    {{title}}
+  </h2>
+
+  <div class="config-box center">
+    {{#each tags as |tag|}}
+      <label class="tag">
+        {{tag.name}}
+      </label>
+    {{/each}}
+  </div>
+
+  <p style="text-align: center;">
+    {{{text}}}
+  </p>
+
+  {{#if roll}}
+  <div class="dice-roll">
+    <div class="dice-result">
+      <div class="dice-formula">
+        {{roll.formula}}
+      </div>
+      <div class="dice-tooltip">
+        <section class="tooltip-part">
+          <div class="dice">
+            {{#each rolldices as |groupdice|}}
+              <header class="part-header flexrow">
+                <span class="part-formula">
+                  {{groupdice.number}}d{{groupdice.faces}}
+                </span>
+                <span class="part-total">
+                  {{groupdice.total}}
+                </span>
+              </header>
+              <ol class="dice-rolls">
+                {{#each groupdice.results as |dice|}}
+                  <li class="roll die d{{groupdice.faces}}">
+                    {{dice.result}}
+                  </li>
+                {{/each}}
+              </ol>
+            {{/each}}
+          </div>
+        </section>
+      </div>
+      <h4 class="dice-total">
+        {{roll._total}}
+      </h4>
+    </div>
+  </div>
+  {{/if}}
+</section>

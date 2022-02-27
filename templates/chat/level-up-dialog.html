@@ -1,0 +1,337 @@
+<form>
+  
+  <h1 style="display: flex; justify-content:space-around; font-size:20px; padding:4px;">
+    {{#each benefits}}
+    <a id="{{this}}" class="choosen-benefit 
+    {{#ifEquals @index 0}}active{{/ifEquals}}">
+      {{toUpperEach this}}
+    </a>
+    {{/each}}
+  </h1>
+  
+  <main>
+  {{#each benefits}}
+    <section id="s{{this}}" 
+    class="benefitsection {{#ifEquals @index 0}}show{{else}}hide{{/ifEquals}}">
+      {{#ifEquals this "new technique"}}
+      <div class="grid grid-4col" style="min-height: 260px; margin-bottom: 10px;">
+        <aside class="side">
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            Grade {{../grade}}
+          </h2>
+          {{#each ../techniques}}
+          <a id="{{this._id}}" class="technique 
+            {{#ifEquals @index 0}}active{{/ifEquals}}
+          ">
+            {{this.name}}
+          </a>
+          {{/each}}
+        </aside>
+
+        <main class="grid-span-3">
+          {{#each ../techniques}}
+          <div id="o{{this._id}}" 
+            class="techniquedescription {{#ifEquals @index 0}}show{{else}}hide{{/ifEquals}}">
+            <div style="display:flex; align-items: center; gap: 10px;">
+              <label style="font-size: 17px">{{name}}</label>
+              <img src="systems/majimonsters/img/elem{{data.element}}.png" width="36" height="36" style="border:0px">
+              {{printActionType data.type}}
+            </div>
+            <hr>
+            {{{data.description}}}
+            <b>{{data.tags}}</b>
+          </div>
+          {{/each}}
+        </main>
+      </div>
+      {{/ifEquals}}
+
+      {{#ifEquals this "replace technique"}}
+      <div class="grid grid-4col" style="min-height: 260px; margin-bottom: 10px">
+        <aside class="side">
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            Grade {{../grade}}
+          </h2>
+          {{#each ../techniques}}
+          <a id="{{this._id}}" class="technique 
+            {{#ifEquals @index 0}}active{{/ifEquals}}
+          ">
+            {{this.name}}
+          </a>
+          {{/each}}
+        </aside>
+
+        <main class="grid-span-3">
+          {{#each ../techniques}}
+          <div id="o{{this._id}}" 
+            class="techniquedescription {{#ifEquals @index 0}}show{{else}}hide{{/ifEquals}}">
+            <div style="display:flex; align-items: center; gap: 10px;">
+              <label style="font-size: 17px">{{name}}</label>
+              <img src="systems/majimonsters/img/elem{{data.element}}.png" width="36" height="36" style="border:0px">
+              {{printActionType data.type}}
+            </div>
+            <hr>
+            {{{data.description}}}
+            <b>{{data.tags}}</b>
+          </div>
+          {{/each}}
+        </main>
+      </div>
+      {{/ifEquals}}
+
+      {{#ifEquals this "attribute increase"}}
+      <div style="display:flex; justify-content:center;">
+        Choose 1 stat
+      </div>
+      <div style="display:flex; justify-content:center;gap:25px;margin:5px;">
+        {{#each ../actor.data.upgrade}}
+          {{#unless this.first}}
+            <a id="{{@key}}" class="stat first" style="padding:3px; display:flex;flex-direction:column; justify-content: center;text-align: center; border: 1px solid black; border-radius:5px; flex:1">
+              <label style="border-bottom: 2px solid black; font-weight: bold;">{{toUpperEach @key}}</label>
+              <span>{{lookup ../../actor.data.stats @key}}</span>          
+            </a>
+          {{else}}
+            {{#unless this.second}}
+              <a id="{{@key}}" class="stat second" style="padding:3px; display:flex;flex-direction:column; justify-content: center;text-align: center; border: 1px solid black; border-radius:5px; flex:1">
+                <label style="border-bottom: 2px solid black; font-weight: bold;">{{toUpperEach @key}}</label>
+                <span>{{lookup ../../actor.data.stats @key}}</span>          
+              </a>
+            {{/unless}}        
+          {{/unless}}
+        {{/each}}
+      </div>
+      {{/ifEquals}}
+
+      {{#ifEquals this "new trait"}}
+      <div class="grid grid-4col" style="min-height: 260px;">
+        <aside class="side" style="overflow:scroll; height: 260px">
+
+          {{!-- list of optional traits --}}
+
+          {{#if ../optional}}
+          {{#ifEqualorMore ../grade ../optional.0.tgrade}}
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            Optional Traits
+          </h2>
+          {{/ifEqualorMore}}
+          {{/if}}
+
+          {{#each ../optional}}
+          {{#ifEqualorMore ../../grade tgrade}}
+          <a id="{{this._id}}" class="optional trait">
+            {{this.name}}
+          </a>
+          {{/ifEqualorMore}}
+          {{/each}}
+
+          {{!-- list of class traits --}}
+          {{#if ../class_traits}}
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            Class Traits
+          </h2>
+          {{/if}}
+
+          {{#each ../class_traits}}
+          <a id="{{this._id}}" class="class trait">
+            {{this.name}}
+          </a>
+          {{/each}}
+
+          {{!-- list of general traits --}}
+
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            General Traits
+          </h2>
+
+          {{#each ../traits}}
+          <a id="{{this._id}}" class="general trait
+          {{#ifEquals @index 0}}active{{/ifEquals}}">
+            {{this.name}}
+          </a>
+          {{/each}}
+        </aside>
+
+        <main class="grid-span-3">
+          {{#each ../optional}}
+          <div id="t{{this._id}}" class="traitdescription hide">
+            <div style="display:flex; align-items: center; gap: 10px;">
+              <label style="font-size: 17px">{{name}}</label>
+            </div>
+            <hr>
+            {{{data.description}}}
+          </div>
+          {{/each}}
+
+          {{#each ../class_traits}}
+          <div id="t{{this._id}}" 
+            class="traitdescription hide">
+            <div style="display:flex; align-items: center; gap: 10px;">
+              <label style="font-size: 17px">{{name}}</label>
+            </div>
+            <hr>
+            {{{data.description}}}
+          </div>
+          {{/each}}
+
+          {{#each ../traits}}
+          <div id="t{{this._id}}" 
+            class="traitdescription {{#ifEquals @index 0}}show{{else}}hide{{/ifEquals}}">
+            <div style="display:flex; align-items: center; gap: 10px;">
+              <label style="font-size: 17px">{{name}}</label>
+            </div>
+            <hr>
+            {{{data.description}}}
+          </div>
+          {{/each}}
+        </main>
+      </div>
+      {{/ifEquals}}
+
+      {{#ifEquals this "technique upgrade"}}
+      <div class="grid grid-4col" style="min-height: 260px;">
+        <aside class="side" style="overflow:scroll; height: 260px">
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            Upgrades
+          </h2>
+          {{#each ../upgrades}}
+          <a id="{{this._id}}" class="upgrade 
+            {{#ifEquals @index 0}}active{{/ifEquals}}
+          ">
+            {{this.name}}
+          </a>
+          {{/each}}
+        </aside>
+
+        <main class="grid-span-2" style="overflow:scroll; height: 260px">
+          <div>
+            {{#each ../upgrades}}
+            <div id="u{{this._id}}" 
+              class="upgradedescription {{#ifEquals @index 0}}show{{else}}hide{{/ifEquals}}">
+              <div style="display:flex; align-items: center; gap: 10px;">
+                <label style="font-size: 16px">{{name}}</label>
+              </div>
+              <hr>
+              {{{data.description}}}
+              <b>{{data.tags}}</b>
+            </div>
+            {{/each}}
+          </div>
+
+          <div style="margin: 10px 0;display:flex; justify-content: space-around;">
+            <i class="fas fa-arrow-down"></i>
+            <i class="fas fa-arrow-down"></i>
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          
+          <div>
+            {{#each ../upgradable_techniques}}
+            <div id="t{{this._id}}" 
+              class="upgradabledescription {{#ifEquals @index 0}}show{{else}}hide{{/ifEquals}}">
+              <div style="display:flex; align-items: center; gap: 10px;">
+                <label style="font-size: 16px">{{name}}</label>
+                <img src="systems/majimonsters/img/elem{{data.element}}.png" width="20" height="20" style="border:0px">
+                {{printActionType data.type}}
+              </div>
+              <hr>
+              {{{data.description}}}
+              <b>{{data.tags}}</b>
+            </div>
+            {{/each}}
+          </div>
+        </main>
+
+        <aside class="side-right">
+          <h2 style="text-align: center; margin: 4px; font-size:15px; padding:2px;">
+            Target
+          </h2>
+          {{#each ../upgradable_techniques}}
+          <a id="{{this._id}}" class="upgradable 
+            {{#ifEquals @index 0}}active{{/ifEquals}}
+          ">
+            {{this.name}}
+          </a>
+          {{/each}}
+        </aside>
+
+      </div>
+      {{/ifEquals}}
+    </section>
+  {{/each}}
+  </main>
+</form>
+
+<script>
+  // add listeners
+  document.querySelectorAll(".choosen-benefit").forEach(item => {
+    item.addEventListener("click", event => {
+      //change highlighted benefit
+      document.querySelector(".choosen-benefit.active").classList.toggle("active");
+      document.getElementById(event.target.id).classList.toggle("active");
+      const section_id = "s"+event.target.id;
+      //hide previous technique
+      document.querySelector(".benefitsection.show").classList.replace("show", "hide");
+      //show new technique
+      document.getElementById(section_id).classList.replace("hide", "show");
+    })
+  })
+
+  document.querySelectorAll(".technique").forEach(item => {
+    item.addEventListener("click", event => {
+      //change highlighted technique on aside
+      document.querySelector(".technique.active").classList.toggle("active");
+      document.getElementById(event.target.id).classList.toggle("active");
+      const output_id = "o"+event.target.id;
+      //hide previous technique
+      document.querySelector(".techniquedescription.show").classList.replace("show", "hide");
+      //show new technique
+      document.getElementById(output_id).classList.replace("hide", "show");
+    })
+  })
+
+  document.querySelectorAll(".stat").forEach(item => {
+    item.addEventListener("click", event => {
+      document.querySelector(".stat.dark")?.classList.remove("dark");
+      document.getElementById(event.currentTarget.id).classList.toggle("dark");
+    })
+  })
+  
+  document.querySelectorAll(".trait").forEach(item => {
+    item.addEventListener("click", event => {
+      //change highlighted technique on aside
+      document.querySelector(".trait.active").classList.toggle("active");
+      document.getElementById(event.target.id).classList.toggle("active");
+      const trait_id = "t"+event.target.id;
+      //hide previous technique
+      document.querySelector(".traitdescription.show").classList.replace("show", "hide");
+      //show new technique
+      document.getElementById(trait_id).classList.replace("hide", "show");
+    })
+  })
+
+  document.querySelectorAll(".upgrade").forEach(item => {
+    item.addEventListener("click", event => {
+      //change highlighted technique on aside
+      document.querySelector(".upgrade.active").classList.toggle("active");
+      document.getElementById(event.target.id).classList.toggle("active");
+      const upgrade_id = "u"+event.target.id;
+      //hide previous technique
+      document.querySelector(".upgradedescription.show").classList.replace("show", "hide");
+      //show new technique
+      document.getElementById(upgrade_id).classList.replace("hide", "show");
+    })
+  })
+
+  document.querySelectorAll(".upgradable").forEach(item => {
+    item.addEventListener("click", event => {
+      //change highlighted technique on aside
+      document.querySelector(".upgradable.active").classList.toggle("active");
+      document.getElementById(event.target.id).classList.toggle("active");
+      const upgradable_id = "t"+event.target.id;
+      //hide previous technique
+      document.querySelector(".upgradabledescription.show").classList.replace("show", "hide");
+      //show new technique
+      document.getElementById(upgradable_id).classList.replace("hide", "show");
+    })
+  })
+
+</script>

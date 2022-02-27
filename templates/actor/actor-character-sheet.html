@@ -1,0 +1,854 @@
+<form class="{{cssClass}} {{actor.type}} flex-vertical flex-span-1" autocomplete="off">
+
+  <div class="flex-horizontal">
+    <div class="container-relative">
+      <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" class="monster-img"/>
+      <div class="child-absolute circle-icon darkest rollable" data-label="restore_items">
+        <i class="fas fa-redo"></i>
+      </div>
+    </div>
+
+    <div class="flex-vertical flex-span-1">
+      <div class="flex-vertical flex-span-1">
+        <div class="flex-horizontal flex-span-1">
+          <div class="flex-vertical flex-span-2">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="Name" class="flex-span-1 darkest circular-border-small text-white text-gigantic padding-small"/>
+          </div>
+
+          <div class="flex-vertical flex-span-1">
+            <h4 class="circled-box dark">
+              <label>HP</label>
+              <section>
+                <input name="data.hp.value" type="number" value="{{data.hp.value}}"/>
+                <div>/</div>
+                <input name="data.hp.max" type="number" value="{{data.hp.max}}"/>
+              </section>
+            </h4>
+          </div>
+          <div class="flex-vertical flex-span-1">
+            <h4 class="circled-box dark">
+              <label>AUTHORITY</label>
+              <input name="data.attributes.authority" type="number" value="{{data.attributes.authority}}"/>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-horizontal flex-span-1">
+        <div class="flex-vertical flex-span-1">
+          <h4 class="circled-box dark">
+            <label>CLASS</label>
+            <input name="data.attributes.class" type="text" value="{{data.attributes.class}}"/>
+          </h4>
+        </div>
+        <div class="flex-vertical flex-span-1">
+          <h4 class="circled-box dark">
+            <label>ARCHETYPE</label>
+            <input name="data.attributes.archetype" type="text" value="{{data.attributes.archetype}}"/>
+          </h4>
+        </div>
+        <div class="flex-vertical flex-span-1">
+          <h4 class="circled-box dark">
+            <label>BACKGROUND</label>
+            <input name="data.attributes.background" type="text" value="{{data.attributes.background}}"/>
+          </h4>
+        </div>
+      </div>      
+    </div>
+  </div>
+
+  <nav class="sheet-tabs horizontal dark-background" data-group="primary">
+    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item dark-background" data-tab="stats">Skills</a>
+    <a class="item dark-background" data-tab="features">Features</a>
+    <a class="item dark-background" data-tab="equipment">Equipment</a>
+  </nav>
+
+  <section class="sheet-body flex-vertical no-gap">
+    <div class="tab flex-vertical no-gap flex-span-1" data-group="primary" data-tab="stats">
+      <div class="flex-span-1 flex-vertical padding-smaller-horizontal no-gap">
+        <div class="flex-horizontal">
+
+          <div class="flex-vertical flex-span-1 no-gap">
+            <div class="flex-horizontal flex-center">
+              <label class="text-title border-bottom padding-smaller-horizontal">INTERACTION</label>
+              <input name="data.attributes.interaction" value="{{data.attributes.interaction}}" type="number" class="circular-border-total-big border-all text-gigantic text-center"/>
+            </div>
+
+            <div class="flex-horizontal flex-start">
+              <label class="padding-smallest text-small text-italic">Skills</label>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="guile">GUILE</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.guile.g1" type="checkbox" {{checked data.skills.guile.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.guile.g2" type="checkbox" {{checked data.skills.guile.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.guile.g3" type="checkbox" {{checked data.skills.guile.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.guile.g4" type="checkbox" {{checked data.skills.guile.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.guile.g5" type="checkbox" {{checked data.skills.guile.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.guile.g6" type="checkbox" {{checked data.skills.guile.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.guile.g7" type="checkbox" {{checked data.skills.guile.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.guile.g8" type="checkbox" {{checked data.skills.guile.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="perception">PERCEPTION</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.perception.g1" type="checkbox" {{checked data.skills.perception.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.perception.g2" type="checkbox" {{checked data.skills.perception.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.perception.g3" type="checkbox" {{checked data.skills.perception.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.perception.g4" type="checkbox" {{checked data.skills.perception.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.perception.g5" type="checkbox" {{checked data.skills.perception.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.perception.g6" type="checkbox" {{checked data.skills.perception.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.perception.g7" type="checkbox" {{checked data.skills.perception.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.perception.g8" type="checkbox" {{checked data.skills.perception.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="persuasion">PERSUASION</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g1" type="checkbox" {{checked data.skills.persuasion.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g2" type="checkbox" {{checked data.skills.persuasion.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g3" type="checkbox" {{checked data.skills.persuasion.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g4" type="checkbox" {{checked data.skills.persuasion.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g5" type="checkbox" {{checked data.skills.persuasion.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g6" type="checkbox" {{checked data.skills.persuasion.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g7" type="checkbox" {{checked data.skills.persuasion.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.persuasion.g8" type="checkbox" {{checked data.skills.persuasion.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="wits">WITS</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.wits.g1" type="checkbox" {{checked data.skills.wits.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.wits.g2" type="checkbox" {{checked data.skills.wits.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.wits.g3" type="checkbox" {{checked data.skills.wits.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.wits.g4" type="checkbox" {{checked data.skills.wits.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.wits.g5" type="checkbox" {{checked data.skills.wits.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.wits.g6" type="checkbox" {{checked data.skills.wits.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.wits.g7" type="checkbox" {{checked data.skills.wits.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.wits.g8" type="checkbox" {{checked data.skills.wits.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-end flex-o-center flex-span-1 padding-smallest border-top">
+                <label class="text-small text-italic">Checks</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap dark border-corner border-bottom"style="width: 61px">
+                <label class="text-smaller">2d4</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap darker border-corner border-bottom"style="width: 47px">
+                <label class="text-smaller">2d6</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap darkest-white border-corner border-right border-bottom" style="width: 24px">
+                <label class="text-smaller">2d8</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-vertical flex-span-1 no-gap">
+            <div class="flex-horizontal flex-center">
+              <label class="text-title border-bottom padding-smaller-horizontal">KNOWLEDGE</label>
+              <input name="data.attributes.knowledge" value="{{data.attributes.knowledge}}" type="number" class="circular-border-total-big border-all text-gigantic text-center"/>
+            </div>
+
+            <div class="flex-horizontal flex-start">
+              <label class="padding-smallest text-small text-italic">Skills</label>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="education">EDUCATION</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.education.g1" type="checkbox" {{checked data.skills.education.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.education.g2" type="checkbox" {{checked data.skills.education.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.education.g3" type="checkbox" {{checked data.skills.education.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.education.g4" type="checkbox" {{checked data.skills.education.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.education.g5" type="checkbox" {{checked data.skills.education.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.education.g6" type="checkbox" {{checked data.skills.education.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.education.g7" type="checkbox" {{checked data.skills.education.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.education.g8" type="checkbox" {{checked data.skills.education.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="intuition">INTUITION</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g1" type="checkbox" {{checked data.skills.intuition.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g2" type="checkbox" {{checked data.skills.intuition.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g3" type="checkbox" {{checked data.skills.intuition.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g4" type="checkbox" {{checked data.skills.intuition.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g5" type="checkbox" {{checked data.skills.intuition.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g6" type="checkbox" {{checked data.skills.intuition.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g7" type="checkbox" {{checked data.skills.intuition.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.intuition.g8" type="checkbox" {{checked data.skills.intuition.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="proficiency">PROFICIENCY</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g1" type="checkbox" {{checked data.skills.proficiency.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g2" type="checkbox" {{checked data.skills.proficiency.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g3" type="checkbox" {{checked data.skills.proficiency.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g4" type="checkbox" {{checked data.skills.proficiency.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g5" type="checkbox" {{checked data.skills.proficiency.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g6" type="checkbox" {{checked data.skills.proficiency.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g7" type="checkbox" {{checked data.skills.proficiency.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.proficiency.g8" type="checkbox" {{checked data.skills.proficiency.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="survival">SURVIVAL</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.survival.g1" type="checkbox" {{checked data.skills.survival.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.survival.g2" type="checkbox" {{checked data.skills.survival.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.survival.g3" type="checkbox" {{checked data.skills.survival.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.survival.g4" type="checkbox" {{checked data.skills.survival.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.survival.g5" type="checkbox" {{checked data.skills.survival.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.survival.g6" type="checkbox" {{checked data.skills.survival.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.survival.g7" type="checkbox" {{checked data.skills.survival.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.survival.g8" type="checkbox" {{checked data.skills.survival.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-end flex-o-center flex-span-1 padding-smallest border-top">
+                <label class="text-small text-italic">Checks</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap dark border-corner border-bottom"style="width: 61px">
+                <label class="text-smaller">2d4</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap darker border-corner border-bottom"style="width: 47px">
+                <label class="text-smaller">2d6</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap darkest-white border-corner border-right border-bottom" style="width: 24px">
+                <label class="text-smaller">2d8</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex-horizontal half-gap">
+          <div class="flex-span-1">
+          </div>
+
+          <div class="flex-vertical flex-span-2 no-gap">
+            <div class="flex-horizontal flex-center">
+              <label class="text-title border-bottom padding-smaller-horizontal">VIGOR</label>
+              <input name="data.attributes.vigor" value="{{data.attributes.vigor}}" type="number" class="circular-border-total-big border-all text-gigantic text-center"/>
+            </div>
+
+            <div class="flex-horizontal flex-start">
+              <label class="padding-smallest text-small text-italic">Skills</label>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="athletics">ATHLETICS</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g1" type="checkbox" {{checked data.skills.athletics.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g2" type="checkbox" {{checked data.skills.athletics.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g3" type="checkbox" {{checked data.skills.athletics.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g4" type="checkbox" {{checked data.skills.athletics.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g5" type="checkbox" {{checked data.skills.athletics.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g6" type="checkbox" {{checked data.skills.athletics.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g7" type="checkbox" {{checked data.skills.athletics.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.athletics.g8" type="checkbox" {{checked data.skills.athletics.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="fortitude">FORTITUDE</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g1" type="checkbox" {{checked data.skills.fortitude.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g2" type="checkbox" {{checked data.skills.fortitude.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g3" type="checkbox" {{checked data.skills.fortitude.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g4" type="checkbox" {{checked data.skills.fortitude.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g5" type="checkbox" {{checked data.skills.fortitude.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g6" type="checkbox" {{checked data.skills.fortitude.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g7" type="checkbox" {{checked data.skills.fortitude.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.fortitude.g8" type="checkbox" {{checked data.skills.fortitude.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="strength">STRENGTH</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.strength.g1" type="checkbox" {{checked data.skills.strength.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.strength.g2" type="checkbox" {{checked data.skills.strength.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.strength.g3" type="checkbox" {{checked data.skills.strength.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.strength.g4" type="checkbox" {{checked data.skills.strength.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.strength.g5" type="checkbox" {{checked data.skills.strength.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.strength.g6" type="checkbox" {{checked data.skills.strength.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.strength.g7" type="checkbox" {{checked data.skills.strength.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.strength.g8" type="checkbox" {{checked data.skills.strength.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-o-center flex-span-1 padding-smaller border-corner">
+                <label class="rollable text-small" data-label="willpower">WILLPOWER</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest dark border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g1" type="checkbox" {{checked data.skills.willpower.g1}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g2" type="checkbox" {{checked data.skills.willpower.g2}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g3" type="checkbox" {{checked data.skills.willpower.g3}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g4" type="checkbox" {{checked data.skills.willpower.g4}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest darker border-corner">
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g5" type="checkbox" {{checked data.skills.willpower.g5}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g6" type="checkbox" {{checked data.skills.willpower.g6}}>
+                  <span></span>
+                </label>
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g7" type="checkbox" {{checked data.skills.willpower.g7}}>
+                  <span></span>
+                </label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap padding-smallest padding-smaller-horizontal darkest-white border-corner border-right">
+                <label class="circular-box">
+                  <input name="data.skills.willpower.g8" type="checkbox" {{checked data.skills.willpower.g8}}>
+                  <span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="flex-horizontal flex-end no-gap">
+              <div class="flex-horizontal flex-end flex-o-center flex-span-1 padding-smallest border-top">
+                <label class="text-small text-italic">Checks</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap dark border-corner border-bottom"style="width: 61px">
+                <label class="text-smaller">2d4</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap darker border-corner border-bottom"style="width: 47px">
+                <label class="text-smaller">2d6</label>
+              </div>
+              <div class="flex-horizontal flex-center no-gap darkest-white border-corner border-right border-bottom" style="width: 24px">
+                <label class="text-smaller">2d8</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-span-1">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab flex-vertical no-gap flex-span-1" data-group="primary" data-tab="features">
+      <div class="flex-horizontal flex-span-1">
+
+        <nav class="features-tabs vertical flex-span-1 darker border-all circular-border-small flex-vertical flex-span-1 no-gap" data-group="traits">
+          <span class="text-center text-title border-bottom padding-small margin-small-horizontal">
+            List
+          </span>
+          <div class="flex-vertical flex-span-1 item-list position-relative">
+            <div class="flex-vertical flex-span-1 padding-small position-absolute scrollable">
+              {{#each features}}
+              <a class="item flex-horizontal"
+              data-tab="{{#ifEquals @index 0}}first{{else}}{{_id}}{{/ifEquals}}" 
+              data-item-id="{{_id}}">  
+                {{name}}
+              </a>
+              {{/each}}
+            </div>
+          </div>
+        </nav>
+
+        <main class="features-body flex-span-3 flex-vertical position-relative">
+          <div class="flex-vertical flex-span-1 position-absolute scrollable">
+            {{#each features}}
+            <div data-group="traits" 
+            data-tab="{{#ifEquals @index 0}}first{{else}}{{_id}}{{/ifEquals}}"
+            class="tab item" data-item-id="{{_id}}">
+              <div class="flex-vertical no-gap border-all circular-border-small">
+                <div class="flex-horizontal flex-between border-bottom padding-small darkest text-white">
+                  <div class="flex-horizontal flex-center">
+                    <a class="rollable flex-vertical" data-roll-type="item">
+                      <img src="icons/svg/d20.svg" title="{{item.name}}" width="20" height="20" class="no-border"/>
+                    </a>
+
+                    <span class="text-title">
+                      {{name}}
+                    </span>
+                  </div>
+
+                  <div class="flex-horizontal">
+                    <a class="item-edit" title="Edit Technique">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="item-delete" title="Delete Technique">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="padding-small">
+                  {{{data.description}}}
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="tab flex-vertical no-gap flex-span-1" data-group="primary" data-tab="equipment">
+      <div class="flex-horizontal flex-span-1">
+        <div class="flex-span-2 flex-vertical">
+          <div class="flex-horizontal">
+            <div class="flex-span-1 border-all circular-border-small flex-vertical no-gap text-center">
+              <div class="dark flex-vertical flex-center padding-small-top border-bottom">
+                Imperials
+              </div>
+              <input name="data.currency.imperials" type="number" value="{{data.currency.imperials}}" class="no-border"/>
+            </div>  
+
+            <div class="flex-vertical no-gap flex-center">
+              <i class="fas fa-arrow-right"></i>
+              <label class="text-small">x10</label>
+            </div>  
+
+            <div class="flex-span-1 border-all circular-border-small flex-vertical no-gap text-center">
+              <div class="dark flex-vertical flex-center padding-small-top border-bottom">
+                Suls
+              </div>
+              <input name="data.currency.suls" type="number" value="{{data.currency.suls}}" class="no-border"/>
+            </div>
+
+            <div class="flex-vertical no-gap flex-center">
+              <i class="fas fa-arrow-right"></i>
+              <label class="text-small">x5</label>
+            </div> 
+
+            <div class="flex-span-1 border-all circular-border-small flex-vertical no-gap text-center">
+              <div class="dark flex-vertical flex-center padding-small-top border-bottom">
+                Eyes
+              </div>
+              <input name="data.currency.eyes" type="number" value="{{data.currency.eyes}}" class="no-border"/>
+            </div>
+          </div>
+          <div class="flex-span-1 flex-vertical border-all circular-border-small no-gap flex-between">
+            <div class="darker flex-horizontal flex-o-center flex-between border-bottom padding-small">
+              <span class="text-center text-title">
+                Drajules
+              </span>
+              <a class="item-create" data-type="drajule">
+                <i class="fas fa-plus"></i>
+              </a>
+            </div>
+
+            <div class="flex-span-1 item-list position-relative">
+              <div class="flex-horizontal flex-span-1 flex-wrap position-absolute scrollable">
+                <div class="flex-horizontal flex-span-1 padding-small">
+                  {{#each drajules}}
+
+                  <section class="item drajule" data-item-id="{{_id}}">
+                    <img src="{{img}}" title="{{name}}" class="{{#if data.activated}}activated{{/if}}"/>
+                    <div class="item-controls" style="margin: 0px">
+                      <label class="rollable item-control item-edit" title="Edit Drajule">{{name}}</label>
+                      <a class="item-control item-delete" title="Delete Drajule">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>    
+                  </section>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+
+            <div class="darker flex-horizontal flex-center border-top">
+              <a class="show-activated-monsters">
+                Show Activated Majimonsters
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-span-1 border-all circular-border-small flex-vertical no-gap" data-group="items">
+          <div class="darker flex-horizontal flex-o-center flex-between border-bottom padding-small">
+            <span class="text-center text-title">
+              Items
+            </span>
+            <a class="item-create" data-type="item">
+              <i class="fas fa-plus"></i>
+            </a>
+          </div>
+          <div class="flex-vertical flex-span-1 item-list position-relative">
+            <div class="flex-vertical flex-span-1 padding-small position-absolute scrollable">
+              {{#each gear}}
+              <div class="item flex-horizontal flex-between flex-o-center" data-item-id="{{_id}}">
+                <div class="item flex-horizontal no-gap flex-o-center" data-item-id="{{_id}}">
+                  <a class="rollable" data-roll-type="item">
+                    <img src="icons/svg/d20-black.svg" title="{{item.name}}" width="20" height="20" class="no-border"/>
+                  </a>
+                  <a class="flex-horizontal item-edit text-small">  
+                    {{name}} {{printQuantity data.consumable data.quantity data.max}}
+                  </a>
+                </div>
+
+                <a class="item-delete">
+                  <i class="fas fa-trash"></i>
+                </a>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

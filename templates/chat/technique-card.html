@@ -1,0 +1,38 @@
+<section class="item feat" data-item-id="{{_id}}">
+  <div class="item-name" style="padding-left:10px">
+    <div class="item-title">
+      <h4>{{name}}</h4>
+      <div class="item-image">
+        <img src="systems/majimonsters/img/elem{{data.element}}.png" width="36" height="36"/>
+      </div>
+      <label>{{printActionType data.type}}</label>
+    </div>
+  </div>
+
+  <div class="item-description">
+    {{{data.description}}}
+
+    {{#isNotEqual data.attack.stat1 0}}
+      <button class="rollable rollattack" 
+        style="margin: 0px; width: inner;" 
+        data-actor="{{actor_id}}" data-item="{{_id}}"
+      >
+        Roll Attack
+      </button>
+    {{/isNotEqual}}
+
+    {{#if data.damageroll}}
+      <button class="rollable rolldamage"
+        style="margin: 0px; width: inner;" 
+        data-actor="{{actor_id}}" data-item="{{_id}}"
+      >
+        Roll Damage
+      </button>
+    {{/if}}
+
+  </div>
+  
+  <div class="item-tags">
+    {{data.tags}}
+  </div>          
+</section>

@@ -1,0 +1,59 @@
+<form>
+  <h1>{{name}}</h1>
+  
+  <section class="config-box wide">
+    <div class="part"  style="font-size: 15px;">
+      <label>Empower damage-roll:</label>
+      <input id="empower" type="checkbox" onclick="empowering()">
+    </div>
+
+    <div id="targets" class="part" style="display: none;">
+      <label>Targets:</label>
+      <select id="number_targets">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+  </section>
+
+  <hr class="no-margin"/>
+
+  <div class="config-box wide">
+    <label class="part" style="font-size: 15px;">
+      Bonus:
+    </label>
+
+    <div class="part">
+      <label>+1</label>
+      <input id="plus1" type="checkbox">
+    </div>
+
+    <div class="part">
+      <label>-1</label>
+      <input id="minus1" type="checkbox">
+    </div>
+
+    <div class="part">
+      <label>Other:</label>
+      <input id="bonus" type="text" style="width: 100px;">
+    </div> 
+  </div>  
+</form>
+
+<script>
+  function empowering() {
+    const is_empowered = document.getElementById("empower").checked;
+    const targets = document.getElementById("targets");
+
+    if (is_empowered) {
+      targets.style.display = "block";
+    }
+    else {
+      targets.style.display = "none";
+    }
+  }
+</script>

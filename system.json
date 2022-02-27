@@ -1,0 +1,20 @@
+{
+  "name": "majimonsters",
+  "title": "Maji Monsters",
+  "description": "The Maji Monsters system for FoundryVTT!",
+  "version": "1.1.9",
+  "minimumCoreVersion": "0.8.6",
+  "compatibleCoreVersion": "9",
+  "author": "Owen",
+  "esmodules": ["module/majimonsters.mjs"],
+  "styles": ["css/majimonsters.css"],
+  "scripts": [],
+  "packs": [],
+  "gridDistance": 5,
+  "gridUnits": "ft",
+  "primaryTokenAttribute": "hp",
+  "url": "https://github.com/wonderfulrabbit/majimonsters",
+  "manifest": "https://raw.githubusercontent.com/wonderfulrabbit/majimonsters/master/system.json",
+  "download": "https://github.com/wonderfulrabbit/majimonsters/archive/refs/heads/master.zip",
+  "license": "LICENSE.txt"
+}

@@ -1,0 +1,88 @@
+<form class="{{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="item-body">
+
+    <div class="resource">
+      <label class="resource-label">Element:</label>
+      <select name="data.element">
+        {{#select data.element}}
+        <option value="0"></option>
+        <option value="1">{{printElement 1}}</option>
+        <option value="2">{{printElement 2}}</option>
+        <option value="3">{{printElement 3}}</option>
+        <option value="4">{{printElement 4}}</option>
+        <option value="5">{{printElement 5}}</option>
+        <option value="6">{{printElement 6}}</option>
+        <option value="7">{{printElement 7}}</option>
+        <option value="8">{{printElement 8}}</option>
+        <option value="9">{{printElement 9}}</option>
+        <option value="10">{{printElement 10}}</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="resource">
+      <label class="resource-label">Action Type:</label>
+      <select name="data.type">
+        {{#select data.type}}
+        <option value="0">Combat</option>
+        <option value="1">Utility</option>
+        <option value="2">Movement</option>
+        <option value="3">Response</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="resource">
+      <label class="resource-label">Attack:</label>
+      <select name="data.attack.stat1">
+        {{#select data.attack.stat1}}
+        <option value="0"></option>
+        <option value="1">Strike</option>
+        <option value="2">Magic</option>
+        {{/select}}
+      </select>
+      <label>vs.</label>
+      <select name="data.attack.stat2">
+        {{#select data.attack.stat2}}
+        <option value="0"></option>
+        <option value="1">Protection</option>
+        <option value="2">Discipline</option>
+        {{/select}}
+      </select>
+      <label>or</label>
+      <select name="data.attack.stat2_alt">
+        {{#select data.attack.stat2_alt}}
+        <option value="0"></option>
+        <option value="1">Protection</option>
+        <option value="2">Discipline</option>
+        {{/select}}
+      </select>
+    </div>
+
+    <div class="resource">
+      <label class="resource-label">Description:</label>
+      <div class="notlongdescription">
+        {{editor content=data.description target="data.description" rollData=rollData button=true owner=owner editable=editable}}
+      </div>
+    </div>
+
+    <div class="resource">
+      <label class="resource-label">Damage:</label>
+      <input type="text" name="data.damageroll" value="{{data.damageroll}}" data-dtype="String" class="large"/>
+    </div>
+
+    <div class="resource">
+      <label class="resource-label">Tags:</label>
+      <input type="text" name="data.tags" value="{{data.tags}}" data-dtype="String" class="large"/>
+    </div>
+  
+  </section>
+
+</form>

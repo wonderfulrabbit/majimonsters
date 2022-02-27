@@ -1,0 +1,629 @@
+<form class="{{cssClass}} {{actor.type}} flex-vertical flex-span-1" autocomplete="off">
+
+  
+  <div class="flex-horizontal">
+    <div class="container-relative">
+      <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" class="monster-img"/>
+      <div class="child-absolute circle-icon darkest rollable" data-label="rest">
+        <i class="fas fa-redo"></i>
+      </div>
+    </div>
+
+    <section class="flex-vertical flex-span-1 flex-stretched">
+      <section class="flex-horizontal flex-center">
+        <h4 class="circled-box dark">
+          <label>NICKNAME</label>
+          <input name="name" type="text" value="{{actor.name}}"/>
+        </h4>
+
+        <h4 class="circled-box dark">
+          <label>SPECIES</label>
+          <input name="data.specie" type="text" value="{{data.specie}}"/>
+        </h4>
+
+        <h4 class="circled-box dark">
+          <label>HP</label>
+          <section>
+            <input name="data.hp.value" type="number" value="{{data.hp.value}}"/>
+            <div>/</div>
+            <input name="data.hp.max" type="number" value="{{data.hp.max}}"/>
+          </section>
+        </h4>
+      </section>
+
+      <section class="flex-horizontal flex-center">
+        <h4 class="circled-box">
+          <label class="rollable" data-label="grit">GRIT</label>
+          <section>
+            <input name="data.states.grit.value" type="number" value="{{data.states.grit.value}}"/>
+            <div>/</div>
+            <input name="data.states.grit.max" type="number" value="{{data.states.grit.max}}"/>
+          </section>
+        </h4>
+
+        <h4 class="circled-box">
+          <label class="rollable" data-label="initiative" >INITIATIVE</label>
+          <input type="text" value="+ {{data.stats.speed}}" disabled>
+        </h4>
+
+        <h4 class="circled-box">
+          <label class="rollable" data-label="Normal Check" data-roll="2d6">CHECK</label>
+          <input type="text" value="2d6" disabled>
+        </h4>
+      </section>
+    </section>
+  </div>
+
+  <nav class="sheet-tabs horizontal dark-background" data-group="primary">
+    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item dark-background" data-tab="stats">Stats</a>
+    <a class="item dark-background" data-tab="traits">Traits</a>
+    <a class="item dark-background" data-tab="techniques">Techniques</a>
+    <a class="item dark-background" data-tab="info">Info</a>
+    {{#if user.isGM}}
+    <a class="item dark-background" data-tab="progression">Progression</a>
+    {{/if}}
+  </nav>
+
+  <section class="sheet-body flex-vertical no-gap">
+    
+    <div class="tab flex-vertical flex-span-1" data-group="primary" data-tab="stats" style="padding-top:18px">
+      <div class="flex-horizontal margin-small-horizontal">
+        <div class="container-relative flex-vertical flex-span-1 no-gap">
+          <img class="child-absolute stat no-border" src="systems/majimonsters/img/health.png" />
+          <label class="child-absolute bonus-button first bonus-health circular-box">
+            <input name="data.upgrade.health.first" type="checkbox" {{checked data.upgrade.health.first}}>
+            <span></span>
+          </label>
+          <label class="child-absolute bonus-button second bonus-health circular-box">
+            <input name="data.upgrade.health.second" type="checkbox" {{checked data.upgrade.health.second}}>
+            <span></span>
+          </label>
+
+          <input name="data.stats.health" type="number" value="{{data.stats.health}}" class="attribute-value" /> 
+
+          <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="health">
+            HEALTH
+          </div>
+        </div>
+        <div class="container-relative flex-vertical flex-span-1 no-gap">
+          <img class="child-absolute stat no-border" src="systems/majimonsters/img/strike.png" />
+
+          <label class="child-absolute bonus-button first bonus-strike circular-box">
+            <input name="data.upgrade.strike.first" type="checkbox" {{checked data.upgrade.strike.first}}>
+            <span></span>
+          </label>
+          <label class="child-absolute bonus-button second bonus-strike circular-box">
+            <input name="data.upgrade.strike.second" type="checkbox" {{checked data.upgrade.strike.second}}>
+            <span></span>
+          </label>
+
+          <input name="data.stats.strike" type="number" value="{{data.stats.strike}}" class="attribute-value" />
+          <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="strike">
+            STRIKE
+          </div>
+        </div>
+        <div class="container-relative flex-vertical flex-span-1 no-gap">
+          <img class="child-absolute stat no-border" src="systems/majimonsters/img/protection.png" />
+
+          <label class="child-absolute bonus-button first bonus-protection circular-box">
+            <input name="data.upgrade.protection.first" type="checkbox" {{checked data.upgrade.protection.first}}>
+            <span></span>
+          </label>
+          <label class="child-absolute bonus-button second bonus-protection circular-box">
+            <input name="data.upgrade.protection.second" type="checkbox" {{checked data.upgrade.protection.second}}>
+            <span></span>
+          </label>
+
+          <input name="data.stats.protection" type="number" value="{{data.stats.protection}}" class="attribute-value" />
+          <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="protection">
+            PROTECTION
+          </div>
+        </div>
+        <div class="container-relative flex-vertical flex-span-1 no-gap">
+          <img class="child-absolute stat no-border" src="systems/majimonsters/img/magic.png" />
+
+          <label class="child-absolute bonus-button first bonus-magic circular-box">
+            <input name="data.upgrade.magic.first" type="checkbox" {{checked data.upgrade.magic.first}}>
+            <span></span>
+          </label>
+          <label class="child-absolute bonus-button second bonus-magic circular-box">
+            <input name="data.upgrade.magic.second" type="checkbox" {{checked data.upgrade.magic.second}}>
+            <span></span>
+          </label>
+
+          <input name="data.stats.magic" type="number" value="{{data.stats.magic}}" class="attribute-value" />
+          <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="magic">
+            MAGIC
+          </div>
+        </div>
+        <div class="container-relative flex-vertical flex-span-1 no-gap">
+          <img class="child-absolute stat no-border no-border" src="systems/majimonsters/img/discipline.png" />
+
+          <label class="child-absolute bonus-button first bonus-discipline circular-box">
+            <input name="data.upgrade.discipline.first" type="checkbox" {{checked data.upgrade.discipline.first}}>
+            <span></span>
+          </label>
+          <label class="child-absolute bonus-button second bonus-discipline circular-box">
+            <input name="data.upgrade.discipline.second" type="checkbox" {{checked data.upgrade.discipline.second}}>
+            <span></span>
+          </label>
+
+          <input name="data.stats.discipline" type="number" value="{{data.stats.discipline}}" class="attribute-value" />
+          <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="discipline">
+            DISCIPLINE
+          </div>
+        </div>
+        <div class="container-relative flex-vertical flex-span-1 no-gap">
+          <img class="child-absolute stat no-border" src="systems/majimonsters/img/speed.png" />
+
+          <label class="child-absolute bonus-button first bonus-speed circular-box">
+            <input name="data.upgrade.speed.first" type="checkbox" {{checked data.upgrade.speed.first}}>
+            <span></span>
+          </label>
+          <label class="child-absolute bonus-button second bonus-speed circular-box">
+            <input name="data.upgrade.speed.second" type="checkbox" {{checked data.upgrade.speed.second}}>
+            <span></span>
+          </label>
+
+          <input name="data.stats.speed" type="number" value="{{data.stats.speed}}" class="attribute-value" />
+          <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="speed">
+            SPEED
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-horizontal padding-small sidebar">
+        
+        <div class="flex-vertical flex-span-1">
+          <img src="systems/majimonsters/img/elem{{data.elements.affinities.n1}}.png" class="rollable no-border" data-label="show-affinity" data-type="n1"/>
+
+          <select name="data.elements.affinities.n1">
+            {{#select data.elements.affinities.n1}}
+            <option value="0"></option>
+            <option value="1">{{printElement 1}}</option>
+            <option value="2">{{printElement 2}}</option>
+            <option value="3">{{printElement 3}}</option>
+            <option value="4">{{printElement 4}}</option>
+            <option value="5">{{printElement 5}}</option>
+            <option value="6">{{printElement 6}}</option>
+            <option value="7">{{printElement 7}}</option>
+            <option value="8">{{printElement 8}}</option>
+            <option value="9">{{printElement 9}}</option>
+            <option value="10">{{printElement 10}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="flex-vertical flex-span-1">
+          <img src="systems/majimonsters/img/elem{{data.elements.affinities.n2}}.png" class="rollable no-border" data-label="show-affinity" data-type="n2"/>
+          <select name="data.elements.affinities.n2">
+            {{#select data.elements.affinities.n2}}
+            <option value="0"></option>
+            <option value="1">{{printElement 1}}</option>
+            <option value="2">{{printElement 2}}</option>
+            <option value="3">{{printElement 3}}</option>
+            <option value="4">{{printElement 4}}</option>
+            <option value="5">{{printElement 5}}</option>
+            <option value="6">{{printElement 6}}</option>
+            <option value="7">{{printElement 7}}</option>
+            <option value="8">{{printElement 8}}</option>
+            <option value="9">{{printElement 9}}</option>
+            <option value="10">{{printElement 10}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="flex-vertical flex-span-1">
+          <img src="systems/majimonsters/img/elem{{data.elements.affinities.n3}}.png" class="rollable no-border" data-label="show-affinity" data-type="n3"/>
+          <select name="data.elements.affinities.n3">
+            {{#select data.elements.affinities.n3}}
+            <option value="0"></option>
+            <option value="1">{{printElement 1}}</option>
+            <option value="2">{{printElement 2}}</option>
+            <option value="3">{{printElement 3}}</option>
+            <option value="4">{{printElement 4}}</option>
+            <option value="5">{{printElement 5}}</option>
+            <option value="6">{{printElement 6}}</option>
+            <option value="7">{{printElement 7}}</option>
+            <option value="8">{{printElement 8}}</option>
+            <option value="9">{{printElement 9}}</option>
+            <option value="10">{{printElement 10}}</option>
+            {{/select}}
+          </select>
+        </div>
+        <div class="flex-vertical flex-span-1">
+          <img src="systems/majimonsters/img/elem{{data.elements.affinities.n4}}.png" class="rollable no-border" data-label="show-affinity" data-type="n4"/>
+          <select name="data.elements.affinities.n4">
+            {{#select data.elements.affinities.n4}}
+            <option value="0"></option>
+            <option value="1">{{printElement 1}}</option>
+            <option value="2">{{printElement 2}}</option>
+            <option value="3">{{printElement 3}}</option>
+            <option value="4">{{printElement 4}}</option>
+            <option value="5">{{printElement 5}}</option>
+            <option value="6">{{printElement 6}}</option>
+            <option value="7">{{printElement 7}}</option>
+            <option value="8">{{printElement 8}}</option>
+            <option value="9">{{printElement 9}}</option>
+            <option value="10">{{printElement 10}}</option>
+            {{/select}}
+          </select>
+        </div>
+
+        <div class="flex-vertical flex-span-2">
+          <div class="flex-horizontal">
+            <div class="flex-vertical flex-span-1 no-gap flex-center">
+              <input name="data.stats.brawn" type="number" value="{{data.stats.brawn}}" class="attribute-value" />              
+              <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="brawn">
+                BRAWN
+              </div>
+            </div>
+
+            <div class="flex-vertical flex-span-1 no-gap flex-center">
+              <input name="data.stats.talent" type="number" value="{{data.stats.talent}}" class="attribute-value" />              
+              <div class="attribute-name rollable" data-label="attribute-roll" data-attribute="talent">
+                TALENT
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-horizontal flex-spread darkest circular-border-small">
+            <label class="rollable text-white" data-label="show-size">SIZE:</label>
+            <select name="data.size" class="text-white">
+              {{#select data.size}}
+              <option value="0">Tiny</option>
+              <option value="1">Small</option>
+              <option value="2">Medium</option>
+              <option value="3">Large</option>
+              <option value="4">Huge</option>
+              {{/select}}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="botbar">
+        <div class="box">
+          <h1 class="rollable" data-label="show-resistvul" data-type="resistances">RESISTANCES</h1>
+          <input name="data.elements.resistances" type="text" value="{{data.elements.resistances}}"/>
+        </div>
+
+        <div class="box">
+          <h1 class="rollable" data-label="show-resistvul" data-type="vulnerabilities">VULNERABILITIES</h1>
+          <input name="data.elements.vulnerabilities" type="text" value="{{data.elements.vulnerabilities}}"/>
+        </div>
+      </div>
+    </div>
+
+    {{!-- ALL TRAITS --}}
+    <section class="tab flex-vertical flex-span-1" data-group="primary" data-tab="traits">
+      <div class="flex-horizontal flex-span-1" data-side="learned">
+
+        <nav class="features-tabs vertical flex-span-1 darker border-all circular-border-small flex-vertical flex-span-1 no-gap" data-group="traits">
+          <span class="text-center text-title border-bottom padding-small margin-small-horizontal">
+            List
+          </span>
+          <div class="flex-vertical flex-span-1 item-list position-relative"  data-side="learned">
+            <div class="flex-vertical flex-span-1 padding-small position-absolute scrollable">
+              {{#each features}}
+              <a class="item flex-horizontal"
+              data-tab="{{#ifEquals @index 0}}first{{else}}{{_id}}{{/ifEquals}}" 
+              data-item-id="{{_id}}">  
+                {{name}}
+              </a>
+              {{/each}}
+            </div>
+          </div>
+        </nav>
+
+        <main class="features-body flex-span-3 flex-vertical position-relative">
+          <div class="flex-vertical flex-span-1 position-absolute scrollable">
+            {{#each features}}
+            <div data-group="traits" 
+            data-tab="{{#ifEquals @index 0}}first{{else}}{{_id}}{{/ifEquals}}"
+            class="tab item" data-item-id="{{_id}}">
+              <div class="flex-vertical no-gap border-all circular-border-small">
+                <div class="flex-horizontal flex-between border-bottom padding-small darkest text-white">
+                  <div class="flex-horizontal flex-center">
+                    <a class="rollable flex-vertical" data-roll-type="item">
+                      <img src="icons/svg/d20.svg" title="{{item.name}}" width="20" height="20" class="no-border"/>
+                    </a>
+
+                    <span class="text-title">
+                      {{name}}
+                    </span>
+                  </div>
+
+                  <div class="flex-horizontal">
+                    <a class="item-edit" title="Edit Technique">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="item-delete" title="Delete Technique">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="padding-small">
+                  {{{data.description}}}
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </main>
+      </div>
+    </section>
+
+    {{!-- ALL TECHNIQUES --}}
+    <section class="tab flex-vertical flex-span-1" data-group="primary" data-tab="techniques">
+      <div class="flex-horizontal flex-span-1" data-side="learned">
+
+        <nav class="techniques-tabs vertical flex-span-1 darker border-all circular-border-small flex-vertical flex-span-1 no-gap" data-group="learned_techniques">
+          <span class="text-center text-title border-bottom padding-small margin-small-horizontal">
+            List
+          </span>
+          <div class="flex-vertical flex-span-1 item-list position-relative"  data-side="learned">
+            <div class="flex-vertical flex-span-1 padding-small position-absolute scrollable">
+              {{#each learned_techniques}}
+              <a class="item flex-horizontal"
+              data-tab="{{#ifEquals @index 0}}first{{else}}{{_id}}{{/ifEquals}}" 
+              data-item-id="{{_id}}">  
+                {{name}}
+              </a>
+              {{/each}}
+            </div>
+          </div>
+        </nav>
+
+        <main class="techniques-body flex-span-3 flex-vertical position-relative">
+          <div class="flex-vertical flex-span-1 position-absolute scrollable">
+            {{#each learned_techniques}}
+            <div data-group="learned_techniques" 
+            data-tab="{{#ifEquals @index 0}}first{{else}}{{_id}}{{/ifEquals}}"
+            class="tab item" data-item-id="{{_id}}">
+              <div class="flex-vertical flex-span-1 no-gap border-all circular-border-small">
+                <div class="flex-horizontal flex-between border-bottom padding-small darkest text-white">
+                  <div class="flex-horizontal flex-end">
+                    <a class="rollable flex-vertical" data-roll-type="item">
+                      <img src="icons/svg/d20.svg" width="20" height="20" class="no-border"/>
+                    </a>
+
+                    <span class="text-title">
+                      {{name}}
+                    </span>
+
+                    <img src="{{img}}" width="20" height="20" class="no-border"/>
+
+                    {{printActionType data.type}}
+                  </div>
+
+                  <div class="flex-horizontal">
+                    <a class="item-edit" title="Edit Technique">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="item-delete" title="Delete Technique">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="padding-small">
+                  {{{data.description}}}
+                </div>
+
+                <div class="flex-horizontal flex-center darkest text-white border-top padding-smaller">
+                  {{data.tags}}
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <div class="tab flex-vertical flex-span-1" data-group="primary" data-tab="info">
+      <div class="flex-span-1 flex-horizontal">
+        <div class="flex-span-1 flex-vertical">
+          <h4 class="circled-box dark">
+            <label class="flex-horizontal flex-around">
+              <i class="fas fa-minus rollable" data-label="xp-change" data-sign="minus"></i>
+              XP
+              <i class="fas fa-plus rollable" data-label="xp-change" data-sign="plus"></i>
+            </label>
+            <section>
+              <input type="number" value="{{data.states.xp.value}}" disabled/>
+              <div>/</div>
+              <input type="number" value="{{data.states.xp.max}}" disabled/>
+            </section>
+          </h4>
+
+          <h4 class="circled-box dark">
+            <label class="flex-horizontal flex-around">
+              <i class="fas fa-minus rollable" data-label="level-change" data-sign="minus"></i>
+              LEVEL
+              <i class="fas fa-plus rollable" data-label="level-change" data-sign="plus"></i>
+            </label>
+            <section>
+              <input type="number" value="{{data.states.level}}" disabled/>
+            </section>
+          </h4>
+
+          <h4 class="circled-box dark">
+            <label>GRADE</label>
+            <input type="number" value="{{newGrade data.states.level}}" disabled />
+          </h4>
+
+          <h4 class="circled-box dark">
+            <label>SEX</label>
+            <section>
+              <select name="data.sex" class="dark">
+                {{#select data.sex}}
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+                {{/select}}
+              </select>
+            </section>
+          </h4>
+        </div>
+       <div class="flex-span-2 flex-vertical no-gap">
+          <label class="text-title text-center">
+            Characteristics
+          </label>
+
+          <div class="flex-vertical flex-span-1 position-relative">
+            <div class="flex-horizontal flex-span-1 position-absolute scrollable">
+            {{editor content=data.characteristics target="data.characteristics" rollData=rollData button=true owner=owner editable=editable resize=false}}
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-span-2 flex-vertical no-gap">
+          <label class="text-title text-center">
+            Behavior
+          </label>
+          <div class="flex-vertical flex-span-1 position-relative">
+            <div class="flex-horizontal flex-stretched flex-span-1 position-absolute scrollable">
+            {{editor content=data.behavior target="data.behavior" rollData=rollData button=true owner=owner editable=editable}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{#if user.isGM}}
+    <div class="tab flex-horizontal flex-span-1" data-group="primary" data-tab="progression">
+
+      <div class="flex-span-1 flex-vertical">
+        <div class="flex-span-1 dark border-all circular-border-small flex-vertical no-gap flex-center">
+          <div class="flex-span-1 flex-vertical no-gap flex-center padding-small">
+            <label>Binder Class</label>
+            <input type="text" name="data.class" value="{{data.class}}" class="padding-small"/>
+          </div>
+        </div>
+
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Optional Traits
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="optional">
+            {{#each optional_features}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-span-1 flex-vertical">
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Starting
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="starting">
+            {{#each starting_techniques}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Grade 1
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="grade1">
+            {{#each grade1_techniques}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-span-1 flex-vertical">
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Grade 2
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="grade2">
+            {{#each grade2_techniques}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Grade 3
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="grade3">
+            {{#each grade3_techniques}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-span-1 flex-vertical">
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Grade 4
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="grade4">
+            {{#each grade4_techniques}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="flex-span-1 border-all circular-border-small flex-vertical flex-between no-gap">
+          <label class="darkest border-bottom text-center text-white">
+            Grade 5
+          </label>
+          <div class="flex-span-1 flex-vertical no-gap item-list" data-side="grade5">
+            {{#each grade5_techniques}}
+            <div class="item padding-smaller border-bottom flex-horizontal flex-between" data-item-id="{{_id}}">
+              <a class="item-edit text-small overflow-hide">{{name}}</a>
+              <a class="item-delete text-small" title="Delete Technique">
+                <i class="fas fa-trash"></i>
+              </a>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    
+  </section>
+    
+</form>
+
