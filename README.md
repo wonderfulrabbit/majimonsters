@@ -9,13 +9,14 @@
 - Click the import button
 - Paste the complete text of the technique you want to import
 
-## How to use the automated level up options
-- Drag the techniques to the progression tab inside the monster
-- Drag the optional traits in this format: name (grade #)
-- Add the class of the binder on the "Binder Class" input
+## How to use the automated level up options (optional)
+- Drag the techniques to the progression tab of a monster
+- Drag the optional traits as items with this format: name (grade #)
+  - For example: Smoke (Grade 2)
+- Write the name of the class (progression tab)
+  - For example: alchemist, concordant, etc
 - Create the following compendiums:
   -  Traits
-  -  Class traits ( alchemist traits, concordant traits, etc)
   -  Technique upgrades
-
+  -  A compendium for each class traits. *For example: alchemist traits, concordant traits, etc*
 - Fill the compendiums with "feature" items
