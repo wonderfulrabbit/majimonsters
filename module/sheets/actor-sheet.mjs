@@ -384,8 +384,8 @@ export class majiActorSheet extends ActorSheet {
     // Handle item rolls.
     if (dataset.rollType) {
       if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
-        const item = this.actor.items.get(itemId);
+        const itemId = await element.closest('.item').dataset.itemId;
+        const item = await this.actor.items.get(itemId);
         if (item) return item.roll();
       }
     }
