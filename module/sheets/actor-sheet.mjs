@@ -377,12 +377,12 @@ export class majiActorSheet extends ActorSheet {
    * @private
    */
   async _onRoll(event) {
-    event.preventDefault();
-    const element = event.currentTarget;
-    const dataset = element.dataset;
+    await event.preventDefault();
+    const element = await event.currentTarget;
+    const dataset = await element.dataset;
 
     // Handle item rolls.
-    if (dataset.rollType) {
+    if (await dataset.rollType) {
       if (dataset.rollType == 'item') {
         const itemId = await element.closest('.item').dataset.itemId;
         const item = await this.actor.items.get(itemId);
